@@ -1,0 +1,18 @@
+generator client {
+    provider          = "go run github.com/prisma/prisma-client-go"
+    disableGoBinaries = true
+    output            = "./generatedPrisma"
+    package           = "relations"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model users {
+    id      Int    @id @unique @default(autoincrement())
+    name    String @db.VarChar
+    surname String @db.VarChar
+    phone   String @db.VarChar
+}
